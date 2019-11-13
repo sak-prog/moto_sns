@@ -1,0 +1,13 @@
+<% provide(:title, "ホーム") %>
+<div class="box_area">
+  <div class="box box_bg_photo">
+    <h1>素敵なバイク仲間と</h1>
+    <h2>出会えますように。</h2>
+    <div class="box_registar">
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+      </div>
+      <div class="box_registar">
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-lg btn-primary" %>
+    </div>
+  </div>
+</div>
