@@ -1,0 +1,22 @@
+<% provide(:title, 'ユーザーページ') %>
+<div class="container">
+  <div class="profile-wrap">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <%= gravatar_for(@user, size: 100) %>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <h1><%= @user.name %></h1>
+          <% if @user == current_user %>
+            <%= link_to "プロフィールを編集", edit_user_registration_path, class: "btn btn-outline-dark common-btn edit-profile-btn" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="user_info">
+        <p><%= @user.introduce %></p>
+        <p>車種：<%= @user.motorcycle %></p>
+      </div>
+    </div>
+  </div>
+</div>

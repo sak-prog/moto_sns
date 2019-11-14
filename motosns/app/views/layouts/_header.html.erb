@@ -11,9 +11,12 @@
         <li class="nav-item active">
           <%= link_to(about_path,class: "nav-link") do %>このサービスについて<% end %>
         </li>
+        <li class="nav-item active">
+          <%= link_to(users_path,class: "nav-link") do %>ユーザー一覧<% end %>
+        </li>
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to(edit_user_registration_path,class: "nav-link") do %>プロフィールの変更<% end %>
+            <%= link_to(user_path(current_user),class: "nav-link") do %>マイページ<% end %>
           </li>
           <li class="nav-item active">
             <%= link_to(destroy_user_session_path, method: :delete,class: "nav-link") do %>ログアウト<% end %>
