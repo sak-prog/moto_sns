@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get 'index', to: 'home#index'
   devise_for :users, path_names: { sign_in: "login", sign_out: "logout"}
   resources :users, only: %i[index show]
+  resources :posts, only: %i[index show new create destroy]
 end

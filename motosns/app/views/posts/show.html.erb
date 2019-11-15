@@ -1,0 +1,26 @@
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="col-md-8 col-md-2 mx-auto">
+      <div class="card-wrap">
+        <div class="card">
+          <div class="card-header align-items-center">
+            <%= link_to user_path(@post.user), class: "no-text-decoration" do %>
+              <%= image_tag avatar_url(@post.user) %>
+            <% end %>
+            <%= link_to user_path(@post.user), class: "black-color no-text-decoration", title: @post.user.name do %>
+              <strong><%= @post.user.name %></strong>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <div class="card-content">
+              <span><strong><%= @post.user.name %></strong></span>
+              <span><%= @post.content %></span>
+              <hr>
+              <small class="text-muted"><%= @post.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

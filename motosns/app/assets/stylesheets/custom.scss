@@ -1,6 +1,8 @@
 $gray-medium-light: #eaeaea;
 
 body {
+  margin-top: 55px;
+  margin-bottom: 55px;
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
 }
 
@@ -43,11 +45,11 @@ body {
 }
 
 .devise-wrapper {
-  margin-top: 40px;
+  padding: 20px 0px;
 }
 
 .profile-wrap{
-  margin: 40px 0px;
+  padding: 40px 0px;
 }
 
 .edit-profile-btn {
@@ -62,4 +64,8 @@ body {
 
 .user_info {
   margin: 15px 70px;
+}
+
+.new-post-wrap {
+  padding: 15px 0px;
 }
