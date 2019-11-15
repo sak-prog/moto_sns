@@ -13,6 +13,10 @@
                 <%= f.text_field :content, class: "form-control border-0", placeholder: "投稿内容" %>
               </div>
             </div>
+            <div class="mb-3">
+              <%= f.label :image, "写真" %><br>
+              <%= f.file_field :image %>
+            </div>
             <div class="text-center">
               <%= f.submit "投稿する", class: "btn btn-success" %>
             </div>

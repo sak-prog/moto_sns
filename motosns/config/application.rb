@@ -23,5 +23,7 @@ module Motosns
     config.generators.stylesheets    = false
     config.generators.javascripts    = false
     config.generators.helper         = false
+
+    config.time_zone = 'Tokyo'
   end
 end

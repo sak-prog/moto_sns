@@ -17,6 +17,13 @@
         <p><%= @user.introduce %></p>
         <p>車種：<%= @user.motorcycle %></p>
       </div>
+      <div class="album py-5">
+        <div class="container">
+          <div class="row">
+            <%= render 'posts/post_body', { posts: @posts } %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
