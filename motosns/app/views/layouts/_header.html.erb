@@ -5,9 +5,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <% unless user_signed_in? %>
-          <%= link_to(root_path,class: "navbar-brand") do %>ホーム<% end %>
-        <% end %>
+        <%= link_to(root_path,class: "navbar-brand") do %>ホーム<% end %>
         <li class="nav-item active">
           <%= link_to(about_path,class: "nav-link") do %>このサービスについて<% end %>
         </li>

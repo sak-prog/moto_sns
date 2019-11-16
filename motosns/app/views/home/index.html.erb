@@ -1,5 +1,13 @@
 <% provide(:title, "ホーム") %>
-<div class="box_area">
+<% if user_signed_in? %>
+  <div class="album py-5">
+    <div class="container">
+      <div class="row">
+        <%= render 'users/feed', { feed_items: @feed_items } %>
+      </div>
+    </div>
+  </div>
+<% else %>
   <div class="box box_bg_photo">
     <h1>素敵なバイク仲間と</h1>
     <h2>出会えますように。</h2>
@@ -10,4 +18,4 @@
       <%= link_to "ログイン", new_user_session_path, class: "btn btn-lg btn-primary" %>
     </div>
   </div>
-</div>
+<% end %>
