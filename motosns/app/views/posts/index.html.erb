@@ -3,5 +3,8 @@
     <div class="row">
       <%= render 'post_body', { posts: @posts } %>
     </div>
+    <div class="mx-auto" style="width: 450px;">
+      <%= paginate @posts, window: 2 %>
+    </div>
   </div>
 </div>

@@ -2,8 +2,10 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :destroy]
   before_action :correct_user, only: :destroy
 
+  MAX_POST = 12
+
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(MAX_POST)
   end
 
   def show
