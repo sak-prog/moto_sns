@@ -15,6 +15,18 @@
       <%= f.text_field :introduce, autofocus: true, class: "form-control" %>
     </div>
     <div class="form-group col-xs-12 col-md-10 mx-auto">
+      <%= f.label :manufacturer_ids, 'メーカー' %> 
+      <div>
+        <%= f.collection_check_boxes :manufacturer_ids, Manufacturer.all, :id, :name do |b| %>
+          <div class="form-check form-check-inline">
+            <%= b.label class:"label-checkbox" do%>
+              <%= b.check_box + b.label %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group col-xs-12 col-md-10 mx-auto">
       <%= f.label :motorcycle, "車種" %>
       <%= f.text_area :motorcycle,  class: 'form-control', placeholder: "100文字以内で入力" %>
     </div>

@@ -23,7 +23,16 @@
       </div>
       <div class="user_info">
         <p><%= @user.introduce %></p>
-        <p>車種：<%= @user.motorcycle %></p>
+        <% unless @user.manufacturers.blank? %>
+          <p>メーカー：
+            <% @user.manufacturers.each do |manufacturer| %>
+              <%= manufacturer.name %>
+            <% end %>
+          </p>
+        <% end %>
+        <% unless @user.motorcycle.blank? %>
+          <p>車種：<%= @user.motorcycle %></p>
+        <% end %>
       </div>
     </div>
   </div>
@@ -40,6 +49,9 @@
               <hr>
               <div class="d-flex justify-content-between align-items-center">
                 <%= user.introduce %><br>
+                <% user.manufacturers.each do |manufacturer| %>
+                  <%= manufacturer.name %><br>
+                <% end %>
                 <%= user.motorcycle %>
               </div>
               <small class="text-muted"><%= user.created_at.strftime("%Y-%m-%d %H:%M") %></small>

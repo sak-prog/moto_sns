@@ -23,7 +23,14 @@
       </div>
       <div class="user_info">
         <p><%= @user.introduce %></p>
-        <% if @user.motorcycle %>
+        <% unless @user.manufacturers.blank? %>
+          <p>メーカー：
+            <% @user.manufacturers.each do |manufacturer| %>
+              <%= manufacturer.name %>
+            <% end %>
+          </p>
+        <% end %>
+        <% unless @user.motorcycle.blank? %>
           <p>車種：<%= @user.motorcycle %></p>
         <% end %>
       </div>

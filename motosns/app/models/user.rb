@@ -12,6 +12,8 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :manufacturer_users
+  has_many :manufacturers, through: :manufacturer_users, dependent: :destroy
   validates :name, presence: true, length: { maximum: 50 }
   validates :introduce, length: { maximum: 160 }
   validates :motorcycle, length: { maximum: 100 }

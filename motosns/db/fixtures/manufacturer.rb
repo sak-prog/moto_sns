@@ -1,0 +1,18 @@
+Manufacturer.seed(:id,
+  { :id => 1, :name => "HONDA" },
+  { :id => 2, :name => "YAMAHA" },
+  { :id => 3, :name => "SUZUKI" },
+  { :id => 4, :name => "Kawasaki" },
+  { :id => 5, :name => "HARLEY_DAVIDSON" },
+  { :id => 6, :name => "DUCATI" },
+  { :id => 7, :name => "BMW" },
+  { :id => 8, :name => "KTM" },
+  { :id => 9, :name => "MV_AGUSTA" },
+  { :id => 10, :name => "aprilia" },
+  { :id => 11, :name => "TRIUMPH" },
+  { :id => 12, :name => "MOTOGUZZI" },
+  { :id => 13, :name => "Husqvarna" },
+  { :id => 14, :name => "Megelli" },
+  { :id => 15, :name => "HYOSUNG" },
+  { :id => 16, :name => "その他" }
+  )
