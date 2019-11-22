@@ -37,13 +37,37 @@
     </div>
   </div>
 </div>
-<div class="album py-5">
-  <div class="container">
-    <div class="row">
-      <%= render 'posts/post_body', { posts: @posts } %>
+<ul class="nav nav-tabs nav-justified" role="tablist">
+  <li class="nav-item">
+    <a href="#post" id="post-tab" class="nav-link active" role="tab" aria-controls="post" aria-selected="true" data-toggle="tab">投稿(<%= @user.posts.count %>)</a>
+  </li>
+  <li class="nav-item">
+    <a href="#like" id="like-tab" class="nav-link" role="tab" aria-controls="like" aria-selected="true" data-toggle="tab">いいねした投稿(<%= @user.liked_posts.count %>)</a>
+  </li>
+</ul>
+<div class="tab-content mt-3">
+  <div id="post" class="tab-pane active" role="tabpanel" aria-labelledby="post-tab">
+    <div class="album py-5">
+      <div class="container">
+        <div class="row">
+          <%= render 'posts/post_body', { posts: @posts } %>
+        </div>
+        <div class="mx-auto" style="width: 450px;">
+          <%= paginate @posts, window: 2 %>
+        </div>
+      </div>
     </div>
-    <div class="mx-auto" style="width: 450px;">
-      <%= paginate @posts, window: 2 %>
+  </div>
+  <div id="like" class="tab-pane" role="tabpanel" aria-labelledby="like-tab">
+    <div class="album py-5">
+      <div class="container">
+        <div class="row">
+          <%= render 'posts/post_body', { posts: @user.liked_posts } %>
+        </div>
+        <div class="mx-auto" style="width: 450px;">
+          <%= paginate @posts, window: 2 %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

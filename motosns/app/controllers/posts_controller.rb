@@ -6,10 +6,12 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).per(MAX_POST)
+    @like = Like.new
   end
 
   def show
     @post = Post.find(params[:id])
+    @like = Like.new
   end
 
   def new

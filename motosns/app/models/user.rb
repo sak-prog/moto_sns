@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :manufacturer_users
   has_many :manufacturers, through: :manufacturer_users, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
   validates :name, presence: true, length: { maximum: 50 }
   validates :introduce, length: { maximum: 160 }
   validates :motorcycle, length: { maximum: 100 }
@@ -35,5 +37,9 @@ class User < ApplicationRecord
                      WHERE follower_id = :user_id"
     Post.includes(:user).where("user_id IN (#{following_ids})
                      OR user_id = :user_id", user_id: id)
+  end
+
+  def already_liked?(post)
+    self.likes.exists?(post_id: post.id)
   end
 end
