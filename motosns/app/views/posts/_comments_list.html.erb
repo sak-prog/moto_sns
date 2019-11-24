@@ -1,0 +1,20 @@
+<% comments.each do |comment| %>
+  <div class="card card-body shadow-sm mt-2">
+    <div class="row">
+      <div class="col-md-2">
+        <span>
+          <strong>
+            <%= link_to comment.user.name, user_path(comment.user), class: "text-decoration-none black-color" %>
+          </strong>
+        </span>
+        <% if comment.user == current_user %>
+          <%= link_to "✖︎", comment_path(comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "delete-comment" %>
+        <% end %>
+      </div>
+      <hr>
+      <div class="col-md-10">
+        <span><%= comment.content %></span>
+      </div>
+    </div>
+  </div>
+<% end %>

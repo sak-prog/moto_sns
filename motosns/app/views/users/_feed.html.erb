@@ -5,23 +5,30 @@
         <%= image_tag feed_item.image.thumb.url if feed_item.image? %>
         <div class="card-body">
           <p class="card-text"><%= feed_item.content %></p>
+          <div class="btn-group">
+            <%= link_to post_path(feed_item) do %>
+              <i class="btn btn-sm btn-outline-secondary"><span>詳細</span></i>
+            <% end %>
+            <% if user_signed_in? %>
+              <% if current_user.id == feed_item.user.id %>
+                <%= link_to post_path(feed_item),  method: :delete, data: { confirm: '本当に削除しますか？' } do %>
+                  <i class="btn btn-sm btn-outline-secondary"><span>削除</span></i>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
           <hr>
           <div class="d-flex justify-content-between align-items-center">
             <%= link_to feed_item.user.name, user_path(feed_item.user) %>
             <small class="text-muted"><%= feed_item.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
           </div>
-          <div class="pull-right">
-            <div class="btn-group">
-              <%= link_to post_path(feed_item) do %>
-                <i class="btn btn-sm btn-outline-secondary"><span>詳細</span></i>
-              <% end %>
-              <% if user_signed_in? %>
-                <% if current_user.id == feed_item.user.id %>
-                  <%= link_to post_path(feed_item),  method: :delete, data: { confirm: '本当に削除しますか？' } do %>
-                    <i class="btn btn-sm btn-outline-secondary"><span>削除</span></i>
-                  <% end %>
-                <% end %>
-              <% end %>
+          <hr>
+          <div class="row mx-auto">
+            <div class="col-sm-6 col-md-6">
+              <span>コメント : <%= feed_item.comments.count %></span>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <span>いいね : <%= feed_item.likes.count %></span>
             </div>
           </div>
         </div>

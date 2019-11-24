@@ -5,27 +5,32 @@
         <%= image_tag post.image.thumb.url if post.image? %>
         <div class="card-body">
           <p class="card-text"><%= post.content %></p>
+          <div class="btn-group">
+            <%= link_to post_path(post) do %>
+              <i class="btn btn-sm btn-outline-secondary"><span>詳細</span></i>
+            <% end %>
+            <% if user_signed_in? %>
+              <% if current_user.id == post.user.id %>
+                <%= link_to post_path(post),  method: :delete, data: { confirm: '本当に削除しますか？' } do %>
+                  <i class="btn btn-sm btn-outline-secondary"><span>削除</span></i>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
           <hr>
           <div class="d-flex justify-content-between align-items-center">
             <%= link_to post.user.name, user_path(post.user) %>
             <small class="text-muted"><%= post.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
           </div>
-          <div class="pull-right">
-            <div class="btn-group">
-              <%= link_to post_path(post) do %>
-                <i class="btn btn-sm btn-outline-secondary"><span>詳細</span></i>
-              <% end %>
-              <% if user_signed_in? %>
-                <% if current_user.id == post.user.id %>
-                  <%= link_to post_path(post),  method: :delete, data: { confirm: '本当に削除しますか？' } do %>
-                    <i class="btn btn-sm btn-outline-secondary"><span>削除</span></i>
-                  <% end %>
-                <% end %>
-              <% end %>
+          <hr>
+          <div class="row mx-auto">
+            <div class="col-sm-6 col-md-6">
+              <span>コメント : <%= post.comments.count %></span>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <span>いいね : <%= post.likes.count %></span>
             </div>
           </div>
-          <hr>
-          <span>いいね件数 : <%= post.likes.count %></span>
         </div>
       </div>
     </div>

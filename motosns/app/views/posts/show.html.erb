@@ -26,7 +26,6 @@
                 <% end %>
               <% end %>
               <hr>
-              <span>いいね件数 : <%= @post.likes.count %></span>
               <%= render 'likes/like', { post: @post } %>
             </div>
           </div>
@@ -37,11 +36,33 @@
 </div>
 <ul class="nav nav-tabs nav-justified" role="tablist">
   <li class="nav-item">
-    <a href="#user" id="user-tab" class="nav-link active" role="tab" aria-controls="user" aria-selected="true" data-toggle="tab">いいねしたユーザー(<%= @post.liked_users.count %>)</a>
+    <a href="#comment" id="comment-tab" class="nav-link active" role="tab" aria-controls="comment" aria-selected="true" data-toggle="tab">コメント(<%= @post.comments.count %>)</a>
+  </li>
+  <li class="nav-item">
+    <a href="#user" id="user-tab" class="nav-link" role="tab" aria-controls="user" aria-selected="true" data-toggle="tab">いいね(<%= @post.liked_users.count %>)</a>
   </li>
 </ul>
 <div class="tab-content py-3">
-  <div id="user" class="tab-pane active" role="tabpanel" aria-labelledby="user-tab">
+  <div id="comment" class="tab-pane active" role="tabpanel" aria-labelledby="comment-tab">
+    <div class="container">
+      <div class="col-md-10 col-md-1 mx-auto">
+        <div class="row actions" id="comment-form-post-<%= @post.id.to_s %>">
+          <% if user_signed_in? %>
+            <div class="form-grop col-md-10 col-md-1 mx-auto">
+              <%= form_for [@post, @comment] do |f| %>
+                <%= f.text_field :content, class: "form-control", placeholder: "コメント ...", autocomplete: :off %>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+                <br>
+                <%= f.submit 'コメントする',class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <%= render 'comments_list', { comments: @comments } %>
+      </div>
+    </div>
+  </div>
+  <div id="user" class="tab-pane" role="tabpanel" aria-labelledby="user-tab">
     <div class="container">
       <div class="col-md-10 col-md-1 mx-auto">
         <% @post.liked_users.each do |user| %>
