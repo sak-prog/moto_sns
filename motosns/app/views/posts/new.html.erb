@@ -7,15 +7,19 @@
           新規投稿
         </div>
         <div class="card-body">
-          <%= form_for @post, html: { multipart: true, class: "upload-images p-0 border-0" } do |f| %>
-            <div class="form-group row mt-2">
+          <%= form_for @post do |f| %>
+            <div class="field form-group mt-2">
               <div class="col pl-0">
-                <%= f.text_field :content, class: "form-control border-0", placeholder: "投稿内容" %>
+                <%= f.text_area :content, class: "form-control", placeholder: "投稿内容" %>
               </div>
             </div>
             <div class="mb-3">
               <%= f.label :image, "写真" %><br>
               <%= f.file_field :image %>
+            </div>
+            <div class="field form-group form-group-lg">
+              <%= f.label :tag_list, class: "sr-only control-label" %>
+              <%= text_field_tag 'post[tag_list]', @post.tag_list.join(","), class: "form-control",placeholder: "コンマ（,）毎に区切ることで複数投稿することが出来ます。" %>
             </div>
             <div class="text-center">
               <%= f.submit "投稿する", class: "btn btn-success" %>
