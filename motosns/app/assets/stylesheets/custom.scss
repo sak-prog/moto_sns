@@ -6,6 +6,7 @@ body {
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
 }
 
+// トップページ
 .box {
   width: 100vw;
   height: 100vh;
@@ -14,9 +15,11 @@ body {
   justify-content: center; 
   flex-direction: column; 
   color: rgb(248, 247, 247);
-  text-stroke: 1px #000;
-  -webkit-text-stroke: 1px #000;
 
+  .bg_color{
+    background-color: rgba(128,128,128,0.8);
+    border-radius: 15px;
+  }
   h1{
     font-size: 100px;
     @media screen and (max-width: 480px){
@@ -30,7 +33,7 @@ body {
     }
   }
   p{
-    font-size: 35px;
+    font-weight: 500;
   }
 }
 
@@ -44,10 +47,12 @@ body {
   padding-top: 15px;
 }
 
+// ユーザー登録,ログイン画面
 .devise-wrapper {
   padding: 20px 0px;
 }
 
+// ユーザー詳細画面
 .profile-wrap{
   padding: 40px 0px;
 }
@@ -62,10 +67,7 @@ body {
   font-size: 14px;
 }
 
-.user_info {
-  margin: 15px 70px;
-}
-
+// 投稿画面
 .new-post-wrap {
   padding: 15px 0px;
 }

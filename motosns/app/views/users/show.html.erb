@@ -6,13 +6,13 @@
         <%= image_tag avatar_url(@user), :size =>'100x100' %>
       </div>
       <div class="col-md-8">
-        <div class="row">
+        <div class="row px-5">
           <h1><%= @user.name %></h1>
           <% if @user == current_user %>
             <%= link_to "プロフィールを編集", edit_user_registration_path, class: "btn btn-outline-dark common-btn edit-profile-btn" %>
           <% end %>
         </div>
-        <div class="row">
+        <div class="row px-5">
           <section class="stats">
             <%= render 'stats', { user: @user } %>
           </section>
@@ -21,7 +21,7 @@
           <% end %>
         </div>
       </div>
-      <div class="user_info">
+      <div class="col-md-8 pt-5 px-5">
         <p><%= @user.introduce %></p>
         <% unless @user.manufacturers.blank? %>
           <p>メーカー：
