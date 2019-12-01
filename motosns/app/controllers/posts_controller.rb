@@ -5,8 +5,12 @@ class PostsController < ApplicationController
   MAX_POST = 12
 
   def index
-    @posts = Post.page(params[:page]).per(MAX_POST)
-    @like = Like.new
+    if params[:q] && params[:q].reject { |key, value| value.blank? }.present?
+      @q = Post.ransack(search_params)
+    else
+      @q = Post.ransack
+    end
+    @posts = @q.result(distinct: true).page(params[:page]).per(MAX_POST)
   end
 
   def show
@@ -46,5 +50,9 @@ class PostsController < ApplicationController
   def correct_user
     @post = current_user.posts.find_by(id: params[:id])
     redirect_to root_url if @post.nil?
+  end
+
+  def search_params
+    params.require(:q).permit(:content_or_tags_name_cont)
   end
 end

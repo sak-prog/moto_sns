@@ -23,6 +23,7 @@ gem 'kaminari-bootstrap'
 gem 'font-awesome-sass'
 gem 'seed-fu'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'ransack'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
