@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'relationships/create'
-  get 'relationships/destroy'
   root to: 'home#index'
   get 'about', to: 'home#about'
   get 'index', to: 'home#index'
