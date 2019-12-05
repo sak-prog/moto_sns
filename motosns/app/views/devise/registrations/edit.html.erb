@@ -44,11 +44,6 @@
       <%= f.label :password_confirmation, "パスワードの確認" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
     </div>
-    <div class="form-group col-xs-12 col-md-10 mx-auto">
-      <%= f.label :current_password, "現在のパスワード" %>
-      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
-      <i>( プロフィールを変更するには現在のパスワードが必要です )</i>
-    </div>
     <div class="text-center">
       <%= f.submit "更新", class: "btn btn-success" %>
     </div>
