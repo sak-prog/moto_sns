@@ -5,8 +5,8 @@ RSpec.describe PostsController, type: :controller do
     let!(:user) { create(:user) }
     let!(:other_user) { create(:user) }
     let!(:post) { create(:post, user: user) }
-    let!(:other_post) { create(:post, user: other_user) }
-    let!(:posts) { create_list(:post, 11, user: user) }
+    let!(:other_post) { create(:post, user: other_user, created_at: 1.day.ago) }
+    let!(:posts) { create_list(:post, 11, user: user, created_at: 2.day.ago) }
 
     before do
       get :index

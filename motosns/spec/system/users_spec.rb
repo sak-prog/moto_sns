@@ -5,10 +5,11 @@ RSpec.describe "Users", type: :system do
 
   let!(:manufacturer) { create(:manufacturer, name: "MOTO") }
   let!(:manufacturer_user) { create(:manufacturer_user, manufacturer_id: manufacturer.id, user_id: user.id) }
-  let!(:user) { create(:user, name: "moto", introduce: "ruby", manufacturers: [manufacturer]) }
+  let!(:user) { create(:user, name: "moto", introduce: "ruby", manufacturers: [manufacturer], created_at: 1.day.ago) }
   let!(:other_user) { create(:user, name: "sns", motorcycle: "rails") }
   let!(:post) { create(:post, user: user) }
   let!(:other_post) { create(:post, user: other_user) }
+  let!(:posts) { create_list(:post, 2, user: user, created_at: 1.day.ago) }
 
   before do
     sign_in user
@@ -108,5 +109,18 @@ RSpec.describe "Users", type: :system do
     click_on "検索"
     expect(page).not_to have_content user.name
     expect(page).to have_content other_user.name
+  end
+
+  scenario "ユーザーは降順に表示される" do
+    visit users_path
+    within ".users", match: :first do
+      expect(page).to have_content other_user.name
+    end
+  end
+
+  scenario "投稿は降順に表示される" do
+    within ".card", match: :first do
+      expect(page).to have_content post.content
+    end
   end
 end

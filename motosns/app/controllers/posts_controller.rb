@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     else
       @q = Post.ransack
     end
-    @posts = @q.result(distinct: true).page(params[:page]).per(MAX_POST)
+    @posts = @q.result(distinct: true).page(params[:page]).per(MAX_POST).order(created_at: "DESC")
   end
 
   def show

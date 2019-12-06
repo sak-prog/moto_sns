@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   let!(:user) { create(:user) }
-  let!(:users) { create_list(:user, 9) }
+  let!(:users) { create_list(:user, 9, created_at: 1.day.ago) }
   let!(:post) { create(:post, user: user) }
-  let!(:posts) { create_list(:post, 12, user: user) }
+  let!(:posts) { create_list(:post, 12, user: user, created_at: 1.day.ago) }
 
   describe "GET #index" do
     before do

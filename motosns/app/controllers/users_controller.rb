@@ -8,12 +8,13 @@ class UsersController < ApplicationController
     else
       @q = User.ransack
     end
-    @users = @q.result(distinct: true).page(params[:page]).per(MAX_USER)
+    @users = @q.result(distinct: true).page(params[:page]).per(MAX_USER).order(created_at: "DESC")
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(MAX_POST)
+    @posts = @user.posts.page(params[:page]).per(MAX_POST).order(created_at: "DESC")
+    @like_posts = @user.liked_posts.page(params[:page]).per(MAX_POST).order(created_at: "DESC")
   end
 
   def following

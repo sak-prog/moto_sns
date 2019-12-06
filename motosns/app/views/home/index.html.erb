@@ -5,6 +5,11 @@
       <div class="row">
         <%= render 'posts/post_body', { posts: @feed_items } %>
       </div>
+      <div class="row">
+        <div class="mx-auto">
+          <%= paginate @feed_items, window: 2 %>
+        </div>
+      </div>
     </div>
   </div>
 <% else %>

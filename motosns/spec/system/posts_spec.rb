@@ -6,7 +6,7 @@ RSpec.describe "Posts", type: :system do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
   let!(:post) { create(:post, user: user, content: "ruby", tag_list: "rails") }
-  let!(:other_post) { create(:post, user: other_user, content: "hello") }
+  let!(:other_post) { create(:post, user: other_user, content: "hello", created_at: 1.day.ago) }
   let!(:comment) { create(:comment, post: post, user: user) }
 
   before do
@@ -111,5 +111,12 @@ RSpec.describe "Posts", type: :system do
     click_on "検索"
     expect(page).to have_content post.content
     expect(page).not_to have_content other_post.content
+  end
+
+  scenario "投稿は降順に表示される" do
+    visit posts_path
+    within ".card", match: :first do
+      expect(page).to have_content post.content
+    end
   end
 end
