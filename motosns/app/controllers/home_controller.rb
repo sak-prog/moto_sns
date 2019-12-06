@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   MAX_POST = 12
-  
+
   def about
   end
 

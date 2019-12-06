@@ -82,6 +82,22 @@ RSpec.describe "Users", type: :system do
     expect(Relationship.count).to eq before_count
   end
 
+  scenario "フォローページにフォローしたユーザーが表示される" do
+    visit following_user_path(user)
+    expect(page).not_to have_content other_user.name
+    visit user_path(other_user.id)
+    click_on "フォローする"
+    visit following_user_path(user)
+    expect(page).to have_content other_user.name
+  end
+
+  scenario "フォロワーページにフォロワーが表示される" do
+    visit followers_user_path(other_user)
+    expect(page).not_to have_content user.name
+    click_on "フォローする"
+    expect(page).to have_content user.name
+  end
+
   scenario "いいねした投稿を表示する" do
     find('#like-tab').click
     expect(page).not_to have_content other_post.content

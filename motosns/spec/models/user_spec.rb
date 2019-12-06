@@ -32,19 +32,19 @@ RSpec.describe User, type: :model do
     end
 
     it "名前は50文字以内" do
-      user = build(:user, name: 'a' * 51) 
+      user = build(:user, name: 'a' * 51)
       user.valid?
       expect(user.errors[:name]).to include("は50文字以内で入力してください")
     end
 
     it "自己紹介は160文字以内" do
-      user = build(:user, introduce: 'a' * 161) 
+      user = build(:user, introduce: 'a' * 161)
       user.valid?
       expect(user.errors[:introduce]).to include("は160文字以内で入力してください")
     end
 
     it "車種は100文字以内" do
-      user = build(:user, motorcycle: 'a' * 101) 
+      user = build(:user, motorcycle: 'a' * 101)
       user.valid?
       expect(user.errors[:motorcycle]).to include("は100文字以内で入力してください")
     end
