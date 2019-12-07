@@ -156,6 +156,7 @@ GEM
     parallel (1.17.0)
     parser (2.6.3.0)
       ast (~> 2.4.0)
+    pg (1.1.4)
     polyamorous (2.3.0)
       activerecord (>= 5.0)
     popper_js (1.14.5)
@@ -333,6 +334,7 @@ DEPENDENCIES
   kaminari-bootstrap
   listen (>= 3.0.5, < 3.2)
   mini_magick
+  pg
   puma (~> 3.11)
   rails (~> 5.2.3)
   rails-controller-testing
