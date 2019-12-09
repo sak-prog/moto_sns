@@ -14,6 +14,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'devise'
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-facebook'
 gem 'rails-i18n', '~> 5.1'
 gem 'carrierwave'
 gem 'mini_magick'

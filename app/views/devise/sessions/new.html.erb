@@ -16,7 +16,10 @@
       </div>
     <% end %>
     <div class="text-center login-button">
-      <%= f.submit "ログイン", class: "btn btn-success" %><br>
+      <%= f.submit "ログイン", class: "btn btn-success mb mb-1" %><br>
+      <%= link_to user_facebook_omniauth_authorize_path, method: :post do %>
+        <p class="fab fa-facebook btn btn-primary">Facebookでログイン</p>
+      <% end %><br>
       <%= render "devise/shared/links" %>
     </div>
   <% end %>

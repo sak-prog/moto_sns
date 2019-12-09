@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_030443) do
+ActiveRecord::Schema.define(version: 2019_12_07_150434) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -105,6 +105,8 @@ ActiveRecord::Schema.define(version: 2019_11_25_030443) do
     t.text "introduce"
     t.text "motorcycle"
     t.string "image"
+    t.string "uid"
+    t.string "provider"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["introduce"], name: "index_users_on_introduce"
     t.index ["motorcycle"], name: "index_users_on_motorcycle"
