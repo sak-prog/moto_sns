@@ -1,24 +1,30 @@
-# README
+# バイク好きのためのSNS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+オリジナルポートフォリオになります。
+https://moto-sns-2019.herokuapp.com/
 
-Things you may want to cover:
+# 実装した機能
 
-* Ruby version
+* deviseを使用したログイン機能
 
-* System dependencies
+* facebookログイン機能
 
-* Configuration
+* 画像アップロード機能（本番環境はS3を使用）
 
-* Database creation
+* フォロー機能
 
-* Database initialization
+* いいね機能
 
-* How to run the test suite
+* コメント機能
 
-* Services (job queues, cache servers, search engines, etc.)
+* タグ付け機能
 
-* Deployment instructions
+* ページネーション機能
 
-* ...
+* 検索機能
+
+* rubocop
+
+* Rspec
+
+Rspecはcontroller spec, model spec, system specを書きました。
