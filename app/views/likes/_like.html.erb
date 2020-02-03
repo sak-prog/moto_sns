@@ -1,4 +1,5 @@
-<% like = post.like_user(current_user.id) %>
+<% if user_signed_in? %>
+  <% like = post.like_user(current_user.id) %>
   <% if like.present? %>
     <%= button_to post_like_path(post, like), method: :delete, remote: true do %> 
       <i class="fas fa-heart red"></i>
@@ -8,3 +9,4 @@
       <i class="far fa-heart"></i>
     <% end %>
   <% end %> 
+<% end %> 
