@@ -1,8 +1,10 @@
-<% if user_signed_in? %>
-  <hr>
-  <% if current_user.already_liked?(post) %>
-    <%= button_to 'いいねを取り消す', post_like_path(post), method: :delete,class: "btn btn-default" %>
+<% like = post.like_user(current_user.id) %>
+  <% if like.present? %>
+    <%= button_to post_like_path(post, like), method: :delete, remote: true do %> 
+      <i class="fas fa-heart red"></i>
+    <% end %>
   <% else %>
-    <%= button_to 'いいね', post_likes_path(post),class: "btn btn-primary" %>
-  <% end %>
-<% end %>
+    <%= button_to post_likes_path(post), remote: true do %>
+      <i class="far fa-heart"></i>
+    <% end %>
+  <% end %> 

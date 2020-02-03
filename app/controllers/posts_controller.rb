@@ -11,6 +11,7 @@ class PostsController < ApplicationController
       @q = Post.ransack
     end
     @posts = @q.result(distinct: true).page(params[:page]).per(MAX_POST).order(created_at: "DESC")
+    @likes = Like.where(post_id: params[:post_id])
   end
 
   def show

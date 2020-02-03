@@ -1,0 +1,2 @@
+$("#like-<%= @post.id %>").html("<%= j(render partial: 'like', locals: { post: @post }) %>"); 
+$("#user-tab").html("いいね(<%= @post.liked_users.count %>)");

@@ -40,10 +40,6 @@ class User < ApplicationRecord
                      OR user_id = :user_id", user_id: id)
   end
 
-  def already_liked?(post)
-    self.likes.exists?(post_id: post.id)
-  end
-
   def self.find_for_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.name = "facebook user"

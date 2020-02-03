@@ -8,4 +8,8 @@ class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
+
+  def like_user(user_id)
+    likes.find_by(user_id: user_id)
+  end
 end

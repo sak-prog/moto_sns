@@ -31,7 +31,9 @@
                   <% end %>
                 <% end %>
               <% end %>
-              <%= render 'likes/like', { post: @post } %>
+              <span id="like-<%= @post.id %>">
+                <%= render partial: 'likes/like', locals: { post: @post, like: @like } %>
+              </span>
             </div>
           </div>
         </div>
